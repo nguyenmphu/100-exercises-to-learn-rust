@@ -12,6 +12,39 @@
 // interested in learning more about it.
 // You don't have to though: it's perfectly okay to write three separate
 // implementations manually. Venture further only if you're curious.
+trait Power<T> {
+    fn power(self, other: T) -> Self;
+}
+
+impl Power<u32> for u32 {
+    fn power(self, other: u32) -> Self {
+        let mut res = 1u32;
+        for _ in 1..=other {
+            res *= self;
+        }
+        res
+    }
+}
+
+impl Power<u16> for u32 {
+    fn power(self, other: u16) -> Self {
+        let mut res = 1u32;
+        for _ in 1..=other {
+            res *= self;
+        }
+        res
+    }
+}
+
+impl Power<&u32> for u32 {
+    fn power(self, other: &u32) -> Self {
+        let mut res = 1u32;
+        for _ in 1..=(*other) {
+            res *= self;
+        }
+        res
+    }
+}
 
 #[cfg(test)]
 mod tests {
